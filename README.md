@@ -1,37 +1,50 @@
-# Projeto de Esteganografia e Comparação de Imagens
+# Steganography and Image Comparison Project
 
-Este projeto oferece ferramentas para esteganografia em imagens e comparação de imagens usando hash perceptual. O projeto inclui três componentes principais: um encoder de texto para imagens, um decoder de texto de imagens e um comparador de imagens.
+This project provides tools for steganography in images and image comparison using perceptual hashing. It includes three main components: a text encoder for images, a text decoder for images, and an image comparator.
 
-## Componentes
+## Components
 
-### 1. Encoder de Texto em Imagem
+### 1. Image Text Encoder
 
-O encoder permite a inserção de texto oculto em imagens PNG. O texto é codificado em bits e inserido nos canais de cor (R, G, B) da imagem. O código utiliza um número definido de bits (N) para cada canal e preenche os espaços restantes com bits nulos.
+The encoder allows for embedding hidden text into PNG images. The text is encoded into bits and inserted into the color channels (R, G, B) of the image. The code uses a specified number of bits (N) for each channel and fills the remaining space with null bits.
 
-**Funções principais:**
-- `text_to_bits(text)`: Converte o texto em uma string de bits.
-- `insert_text_into_image(image_path, text, n_bits)`: Insere o texto na imagem especificada.
+**Main Functions:**
+- `text_to_bits(text)`: Converts text into a string of bits.
+- `insert_text_into_image(image_path, text, n_bits)`: Embeds the text into the specified image.
 
-### 2. Decoder de Texto em Imagem
+### 2. Image Text Decoder
 
-O decoder extrai texto oculto de uma imagem que foi modificada pelo encoder. O texto é recuperado dos canais de cor da imagem e convertido de volta em uma string de texto. O código detecta um marcador de fim para identificar o final da mensagem e remove o padding.
+The decoder extracts hidden text from an image that has been modified by the encoder. The text is retrieved from the color channels of the image and converted back into a text string. The code detects an end marker to identify the end of the message and removes padding.
 
-**Funções principais:**
-- `bits_to_text(bits)`: Converte uma string de bits de volta em texto.
-- `text_to_bits(text)`: Converte texto em uma string de bits.
-- `extract_text_from_image(image_path, n_bits)`: Extrai o texto da imagem especificada.
+**Main Functions:**
+- `bits_to_text(bits)`: Converts a string of bits back into text.
+- `text_to_bits(text)`: Converts text into a string of bits.
+- `extract_text_from_image(image_path, n_bits)`: Extracts the text from the specified image.
 
-### 3. Comparador de Imagens
+### 3. Image Comparator
 
-O comparador verifica as diferenças entre duas imagens usando hash perceptual. Ele calcula o hash perceptual para cada imagem e determina a distância Hamming entre os hashes para avaliar a similaridade.
+The comparator checks for differences between two images using perceptual hashing. It calculates the perceptual hash for each image and determines the Hamming distance between the hashes to assess similarity.
 
-**Funções principais:**
-- `calculate_image_hash(image_path)`: Calcula o hash perceptual de uma imagem.
-- `compare_images(image_path1, image_path2)`: Compara duas imagens e calcula a distância Hamming entre seus hashes.
+**Main Functions:**
+- `calculate_image_hash(image_path)`: Computes the perceptual hash of an image.
+- `compare_images(image_path1, image_path2)`: Compares two images and calculates the Hamming distance between their hashes.
 
-## Instalação
+### 4. Image Difference
 
-Para usar este projeto, você precisa instalar as seguintes bibliotecas Python:
+The first image is the original (left side), and the second is after embedding the encrypted text into the image.
+
+- Image 1 Hash: `cccc0bcf3199cb32`
+- Image 2 Hash: `cccc09cf3399cb32`
+
+The Hamming distance between the image hashes is: `2`
+
+![Downhill Street with a train in the middle ](https://iili.io/dA7y0s1.png)
+
+## Installation
+
+To use this project, you need to install the following Python libraries:
 
 ```bash
 pip install pillow imagehash
+
+
